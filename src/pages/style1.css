@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;  
+}
+
+.page-wrapper{
+    background-color: #102937;
+    height: 85vh;
+}
+
+.logout-btn{
+    float: right;
+    margin: 10px 30px;
+    padding: 5px 15px;
+    color: #ededed;
+    background-color: #d84f28;
+    cursor: pointer;
+}
+
+.middle-content{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.time{
+    font-size: 72px;
+    font-weight: 400;
+    color: #ededed;
+}
+
+.time-detail p{
+    font-size: 24px;
+    color: #d84f28;
+    font-weight: 300;
+}
+
+.time-but{
+    display: flex;
+    flex-direction: row;
+}
+
+.time-but button{
+    font-size: 16px;
+    padding: 9px 30px;
+    margin: 15px 0;
+    color: #ede6df;
+    background-color: #f9744b;
+    outline: none;
+    cursor: pointer;
+}
+
+.time-but button:hover{
+    background-color: #d84f28;
+}
+
+.play-pause button{
+    background-color: transparent;
+    border: 0 ;
+    cursor: pointer;
+}
+
+.play-pause button .fa{
+    font-size: 60px;
+    color: white;
+    width: 60px;
+    height: 60px;
+}
+
+.play-pause button .fa:hover{
+    color: wheat;
+}
+
+.footer{
+    height: 9vh;
+    background-color: #f9744b;
+}
+
+.footer-status{
+    height: 9vh;
+    margin: 0 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about a {
+    color: #ededed;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.about a:hover {
+    text-decoration: underline;
+}
+
+.check-boxes{
+    display: flex;
+}
+
+.check-input label{
+    padding: 0 10px;
+    color: #ededed;
+    font-weight: 300;
+}
+
+.check-input label input{
+    height: 18px;
+    width: 18px;
+    outline: none;
+    accent-color: #11736e;
+}
+
+.check-input label input:hover{
+    cursor: pointer;
+}
+
+.volume-check i{
+    color: #ededed;
+    padding: 0 5px;
+    font-size: 23px;
+}
+
+.volume-check label input{
+    accent-color: #11736e;
+}
+
+.volume-check label input:hover{
+    cursor: pointer;
+}
+
+.footer-copyright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6vh;
+    background-color: #d84f28;
+}
+
+.footer-copyright p{
+    color: #ededed;
+}

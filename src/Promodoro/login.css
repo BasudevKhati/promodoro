@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;  
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #102937;
+}
+
+.login-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-heading h2{
+    margin: 25px 0;
+    font-size: 38px;
+    color: #d84f28;
+    letter-spacing: 2px;
+}
+
+.login-wrapper {
+    border-radius: 15px 15px 0 0;
+    box-shadow: 1px 0px 11px 0px #9f9f9f;
+}
+
+.login-input{
+    display: flex;
+    flex-direction: column;
+    background-color: #e0dfdf;
+    padding: 30px 50px;
+    border-radius: 15px 15px 0 0;
+}
+
+.login-input label {
+    display: flex;
+    flex-direction: column;
+    margin: 7px;
+    gap: 9px;
+}
+
+.login-input label b{
+    color: #5d5d5d;
+}
+
+.login-input label i {
+    color: red;
+    font-size: 13px;
+}
+
+.login-input label input{
+    width: 400px;
+    height: 50px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    padding: 5px 20px;
+    font-size: 17px;
+}
+
+.login-checkbox label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.login-checkbox label input{
+    width: 15px;
+    cursor: pointer;
+}
+
+.login-checkbox label span{
+    color: #5d5d5d;
+}
+
+.login-link-btn {
+    display: contents;
+}
+
+.login-btn {
+    height: 60px;
+    width: 100%;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    background-color: #d84f28;
+    color: white;
+    cursor: pointer;
+}
+
+.forgot-login {
+    padding: 0 30px;
+    height: 100px;
+    width: 498px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 10px solid #d84f28;
+    background-color: #efefef;
+}
+
+.forgot-login span {
+    font-weight: 600;
+    color: #be2900;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+

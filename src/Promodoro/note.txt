@@ -1,0 +1,255 @@
+    
+    // const[timerMinute, setTimerMinute] = useState('00');
+    // const[timerSecond, setTimerSecond] = useState('00')
+    
+    
+    // let interval = useRef();
+
+    // const startTimer = () => {
+    //     const countdownTime = new Date('00:00').getTime();
+
+    //     interval = setInterval(() => {
+    //         const now = new Date().getTime();
+    //         const distance = countdownTime - now;
+
+    //         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    //         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    //         if (distance < 0) {
+    //             clearInterval(interval.current);
+    //         } else {
+    //             setTimerMinute(minutes)
+    //             setTimerSecond(seconds)
+    //         }
+    //     }, 1000)
+    // }
+
+    // useEffect(() => {
+    //     startTimer();
+    //     return () => {
+    //         clearInterval(interval.current)
+    //     }
+    // })
+
+    
+     navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+
+     const handleVibration = () => {
+         if ("vibrate" in navigator) {
+             // vibration API supported
+             navigator.vibrate(1000);
+             console.log( navigator.vibrate,'sdfj')
+         }
+     }
+
+
+      const [state, setState] = useState({
+        email: '',
+        password: '',
+        errors: {},
+    });
+
+    // const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+        setState((prevState) => ({
+            ...prevState,
+            [name] : value,
+        }));
+    };
+
+    const validate = () => {
+        const { email, password } = state;
+        const errors = {};
+
+        if(!email) {
+            errors.email = 'Email is required'
+        }
+        if(!password) {
+            errors.password = 'Password is required'
+        }
+
+        return errors;
+    }
+
+    const handleSubmit = (e) => {
+   
+        e.preventDefault();
+        const errors = validate();
+        if (Object.keys(errors).length === 0) {
+            
+        } else {
+            setState((prevState) => ({
+                ...prevState,
+                errors,
+            }));
+        }
+    };
+
+    const { email, password, errors } = state;
+
+    ------------------------------------------------------------------------------------------------------------------------
+
+    import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './login.css'
+import React, { useState } from 'react';
+
+
+export const LoginPage = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
+
+    const navigate = useNavigate();
+
+    function handleChange(event) {
+        const { name, value } = event.target;
+        switch (name) {
+            case 'email':
+                setEmail(value);
+                break;
+            case 'password':
+                setPassword(value);
+                break;
+            default:
+                break;
+        }
+    }
+
+    function validate() {
+        const errors = {};
+
+        if (!email) errors.email = 'Email is required';
+        if (!password) errors.password = 'Password is required';
+
+        return errors;
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        const errors = validate();
+        if (Object.keys(errors).length === 0) {
+            navigate('/timer')
+        } else {
+            setErrors(errors);
+        }
+    }
+
+
+    return (
+        <section className="login-page">
+            <div className="container">
+                <div className="login-box">
+                    <div className="login-heading">
+                        <h2>Login Form</h2>
+                    </div>
+                    <div className="login-wrapper">
+                        <div className="login-input">
+                            <form onSubmit={handleSubmit}>
+                                <label>
+                                    <b>Email*</b>
+                                    <input type="email" value={email} name="email" placeholder="Enter your email"  onChange={handleChange} />
+                                    {errors.email && <i>{errors.email}</i>}
+                                </label>
+                                <label>
+                                    <b>Password*</b>
+                                    <input type="password" value={password} name="password" placeholder="Enter your password"  onChange={handleChange} />
+                                    {errors.password && <i>{errors.password}</i>}
+                                </label>
+                                <div className="login-checkbox">
+                                    <label>
+                                        <input type="checkbox" id='login' value='login' />
+                                        <span>Remember me</span>
+                                    </label>
+                                </div>
+                                <button type='submit' className="login-btn" >
+                                    LOGIN
+                                </button>
+                            </form>
+                        </div>
+                        <div className="forgot-login">
+                            <span>Don't have an account?</span>
+                            <span>Forget password?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+};
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+const validEmailRegex = RegExp( /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i );
+
+const validateForm = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach((val) => {
+        val.length > 0 && (valid = false)
+    });
+    return valid;
+};
+
+
+
+const [state, setState] = useState({
+        email: '',
+        password: '',
+        errors: {
+            email: '',
+            password: '',
+        }
+    });
+
+    const navigate = useNavigate();
+
+    const handleChange = (event) => {
+        event.preventDefault();
+        const { name, value } = event.target;
+        let errors = state.errors;
+
+        if(name === 'email') {
+            errors.email = validEmailRegex.test(value) ? "" : "Email is not valid!";  
+        } else if (name === 'password' ) {
+            errors.password = value.length > 8 && /[A-Z]/.test(value) && /[0-9]/.test(value) ? "" : "Password must be at least 8 characters long and contain at least one uppercase letter and one number!";
+        }
+
+        setState({ ...state, errors, [name]: value });
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        if(validateForm(state.errors)) {
+            console.info('Valid Form');
+            navigate('/timer');
+        } else {
+            console.log('Invalid Form')
+        }
+    }
+
+    const{ errors } = state;
+
+
+    password: z
+                .string()
+                .regex(new RegExp(".*[A-Z].*"), "One uppercase character")
+                .regex(new RegExp(".*[a-z].*"), "One lowercase character")
+                .regex(new RegExp(".*\\d.*"), "One number")
+                .regex(new RegExp(".*[`~<>?,./!@#$%^&*()\\-_+=\"'|{}\\[\\];:\\\\].*"),"One special character" )
+                .min(8, "Must be at least 8 characters in length")
+
+
+
+    
+            // password: z
+            //     .string()
+            //     .min(8)
+            //     .max(20)
+                // .refine((value) => /^(?=.*[A-Z])$/.test(value), 'Password should contain atleast one uppercase letter!' ),
+                // .regex(new RegExp('.*[A-Z].*'), 'Password should contain atleast one uppercase letter!')
+                // .regex(new RegExp(/^(?=.*[0-9]) $/), 'Password should contain atleast one number!' )
